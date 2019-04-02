@@ -45,6 +45,10 @@ public class UnicaEntrada extends HttpServlet {
 			nome = novaEmpresa(request, response);
 			System.out.println("mostrando empresa");
 		}
+		if(paramAcao.equals("novaEmpresaForm")) {
+			nome = novaEmpresaForm(request, response);
+			System.out.println("nova empresa formulário");
+		}
 		
 		String [] tipoEEndereco = nome.split(":");
 		if(tipoEEndereco[0].equals("forward")) {
@@ -54,6 +58,9 @@ public class UnicaEntrada extends HttpServlet {
 			response.sendRedirect(tipoEEndereco[1]);
 		}
 		
+	}
+	private String novaEmpresaForm(HttpServletRequest request, HttpServletResponse response) {
+		return "forward:formNovaEmpresa.jsp";
 	}
 	private String novaEmpresa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Cadastrando nova empresa");
